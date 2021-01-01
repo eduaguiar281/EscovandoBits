@@ -187,6 +187,7 @@ namespace EscovandoBits
             dataAnulavel = DateTime.Now;
             Console.WriteLine($"dataAnulavel é igual a : {dataAnulavel}");
 
+            //Nullable<bool> alternativa = null;
             bool? alternativa = null;
             if (!alternativa.HasValue)
             {
