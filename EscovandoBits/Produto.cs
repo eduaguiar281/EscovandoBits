@@ -7,6 +7,8 @@ namespace EscovandoBits
     public delegate void MostrarCalculo(Produto produto);
     public class Produto //: Object
     {
+        public MostrarCalculo MostrarCalculo { get; set; }
+
         public int Codigo { get; set; }
         public string Descricao { get; set; }
 
@@ -19,9 +21,9 @@ namespace EscovandoBits
         {
             Total = Preco * Quantidade;
             MostrarCalculo?.Invoke(this);
+            //if (MostrarCalculo != null)
+            //    MostrarCalculo(this);
         }
-
-        public MostrarCalculo MostrarCalculo { get; set; }
 
         public override string ToString()
         {
