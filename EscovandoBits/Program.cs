@@ -186,6 +186,17 @@ namespace EscovandoBits
             Console.WriteLine($"dataAnulavel é igual a : {dataAnulavel}");
             dataAnulavel = DateTime.Now;
             Console.WriteLine($"dataAnulavel é igual a : {dataAnulavel}");
+
+            bool? alternativa = null;
+            if (!alternativa.HasValue)
+            {
+                Console.WriteLine($"alternativa HasValue verifica se foi atribuido null a variável");
+                alternativa = true; // Atribuição é implicita
+            }
+            Console.WriteLine($"Quando preciso atribuir um valor a uma variavel preciso usar explicitamente a propriedade Value");
+            bool alternativaNaoAnulavel = alternativa.Value;
+
+
             PressioneQualquerTecla();
         }
 
