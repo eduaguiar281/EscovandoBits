@@ -4,13 +4,12 @@ namespace EscovandoBits
 {
     public struct Retangulo
     {
-
         public Retangulo(double baseRetangulo, double alturaRetangulo )
         {
             Base = baseRetangulo;
             Altura = alturaRetangulo;
         }
-
+        
         public double Base { get; set; }
         public double Altura { get; set; }
 

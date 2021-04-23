@@ -4,12 +4,16 @@ using System.Text;
 
 namespace EscovandoBits
 {
+    public class ProdutoBase
+    {
+        public int Codigo { get; set; }
+    }
+
     public delegate void MostrarCalculo(Produto produto);
-    public class Produto //: Object
+    public class Produto : ProdutoBase
     {
         public MostrarCalculo MostrarCalculo { get; set; }
 
-        public int Codigo { get; set; }
         public string Descricao { get; set; }
 
         public decimal Preco { get; set; }

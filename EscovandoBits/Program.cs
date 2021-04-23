@@ -1,8 +1,6 @@
 ﻿using EscovandoBits.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace EscovandoBits
 {
@@ -83,7 +81,7 @@ namespace EscovandoBits
                     Anulaveis();
                 else if (opcao == "4")
                     Enums();
-                else if (opcao == "4")
+                else if (opcao == "5")
                     Structs();
                 continua = opcao != "6";
             }
@@ -116,6 +114,7 @@ namespace EscovandoBits
             //var falso = a > b;
             Console.WriteLine("A variável ''a'' é maior a variável ''b'' : " + falso.ToString());
             //Não consigo atrbuir null (verdadeiro = null;)
+
 
             Console.WriteLine("");
             Console.WriteLine("");
@@ -294,7 +293,8 @@ namespace EscovandoBits
                 Console.WriteLine("5 - Boxing e Unboxing");
                 Console.WriteLine("6 - Conversoes");
                 Console.WriteLine("7 - Dynamics");
-                Console.WriteLine("8 - Sair");
+                Console.WriteLine("8 - Strings");
+                Console.WriteLine("9 - Sair");
                 opcao = Console.ReadLine().Trim();
 
                 if (opcao == "1")
@@ -311,10 +311,49 @@ namespace EscovandoBits
                     Conversoes();
                 else if (opcao == "7")
                     Dynamics();
+                else if (opcao == "8")
+                    Strings();
 
-                continua = opcao != "8";
+                continua = opcao != "9";
             }
             while (continua);
+
+        }
+
+
+        private static void Strings()
+        {
+            Cabecalho("Strings");
+
+            string nome = "Eduardo";
+            Console.WriteLine($"É alocado na Heap o conteúdo '{nome}'");
+            string nomeOriginal = nome;
+            Console.WriteLine($"Variável nome = nomeOriginal {Object.ReferenceEquals(nome, nomeOriginal)} ---> Ambas apontam para a mesma referência");
+            Console.WriteLine("");
+            Console.WriteLine("");
+
+            nome = nome + " Aguiar";
+            Console.WriteLine($"É alocado na Heap o conteúdo '{nome}' em outro ''endereço''");
+            Console.WriteLine($"Variável nome = nomeOriginal {Object.ReferenceEquals(nome, nomeOriginal)} ---> Quando eu alterei a variável ''nome'' ela passou a apontar para outra ''endereço'' ");
+            Console.WriteLine("");
+            Console.WriteLine("");
+
+            string novoNome = nome;
+            Console.WriteLine($"Variável novoNome = nomeOriginal {Object.ReferenceEquals(novoNome, nomeOriginal)}");
+            Console.WriteLine($"Variável nome = nomeOriginal {Object.ReferenceEquals(nome, nomeOriginal)}");
+            Console.WriteLine($"Variável novoNome = nome {Object.ReferenceEquals(novoNome, nome)}");
+
+            Console.WriteLine("Cuidado ao fazer comparações");
+            string nomeCaixaAlta = "EDUARDO AGUIAR";
+            Console.WriteLine("Comparação Errada");
+            Console.WriteLine($"nome.ToLower() == nomeCaixaAlta.ToLower() {nome.ToLower() == nomeCaixaAlta.ToLower()}");
+            Console.WriteLine($"Alocamos mais dois espaços na Heap");
+            Console.WriteLine($"Comparação Correta");
+            Console.WriteLine($"nome.Equals(nomeCaixaAlta, StringComparison.OrdinalIgnoreCase) {nome.Equals(nomeCaixaAlta, StringComparison.OrdinalIgnoreCase)}");
+            Console.WriteLine($"Não ocupamos espaço desnecessário");
+
+
+            PressioneQualquerTecla();
 
         }
 
@@ -447,7 +486,7 @@ namespace EscovandoBits
         private static void MostrarCalculoNoDelegateTresCasasDecimais(Produto produto)
         {
             Console.WriteLine("Mostrando Calculo Com tres casas decimais");
-            Console.WriteLine($"Valor Total do Produto => {produto.Preco:C3} x {produto.Quantidade} = {produto.Total:C2}");
+            Console.WriteLine($"Valor Total do Produto => {produto.Preco:C3} x {produto.Quantidade} = {produto.Total:C3}");
         }
 
         private static void Delegates()
@@ -465,12 +504,12 @@ namespace EscovandoBits
             Console.WriteLine("");
 
             var produto2 = new Produto();
-            produto1.Codigo = 2;
-            produto1.Descricao = "Gasolina Aditivada 1L";
-            produto1.Preco = 5.019m;
-            produto1.Quantidade = 13;
-            produto1.MostrarCalculo = MostrarCalculoNoDelegateTresCasasDecimais;
-            produto1.CalcularTotal();
+            produto2.Codigo = 2;
+            produto2.Descricao = "Gasolina Aditivada 1L";
+            produto2.Preco = 5.019m;
+            produto2.Quantidade = 13;
+            produto2.MostrarCalculo = MostrarCalculoNoDelegateTresCasasDecimais;
+            produto2.CalcularTotal();
 
             PressioneQualquerTecla();
         }
